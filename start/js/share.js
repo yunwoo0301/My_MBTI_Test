@@ -1,23 +1,33 @@
-function kakaoShare() {
+const url = 'https://lovembtitype.netlify.app/';
+
+function setShare(){
+    var resultImg = document.querySelector('#resultImg');
+    var resultAlt = resultImg.firstElementChild.alt;
+    const shareTitle = '십이간지 연애유형 결과';
+    const shareDes = infoList[resultAlt].name;
+    const shareImage = url + 'img/image-' + resultAlt + '.png';
+    const shareURL = url + 'page/result-' + resultAlt + '.html';
+
     Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          title: '십이간지로 알아보는 연애유형',
-          description: '아메리카노, 빵, 케익',
-          imageUrl:
-            'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
+          title: shareTitle,
+          description: shareDes,
+          imageUrl: shareImage,
           link: {
-            mobileWebUrl: 'https://developers.kakao.com',
+            mobileWebUrl: shareURL,
+            webUrl: shareURL
           },
         },
+    
         buttons: [
           {
-            title: '나도 테스트 하러가기',
+            title: '결과확인하기',
             link: {
-              mobileWebUrl: 'https://developers.kakao.com',
-              webUrl: 'https://developers.kakao.com',
+              mobileWebUrl: shareURL,
+              webUrl: shareURL,
             },
           },
-        ],
-    });
-}
+        ]
+      });
+    }
